@@ -1,3 +1,5 @@
+import java.awt.Graphics;
+import java.awt.Color;
 public class Rectangle {
 	private int width;
 	private int height;
@@ -9,7 +11,8 @@ public class Rectangle {
 
 	}
 
-	public paint(Graphics g) {
-		g.fillRect(0, 0, width, height);
+	public void paint(Graphics g, int x, int y) {
+		g.setColor(this.color);
+		g.fillRect(x, y, width, height);
 	}
 }
