@@ -10,6 +10,8 @@ public class AmericanFlag {
 	private Rectangle white;
 	private Rectangle blue;
 	private Rectangle[] stripes;
+	private Point point;
+
 
 	public AmericanFlag(int length, int width, double scale){
 		this.length = length;
@@ -21,19 +23,31 @@ public class AmericanFlag {
 	}
 
 	public void draw(Graphics g) {
-		this.red = new Rectangle(length, 40, Color.red, new Point(0,0));
-		this.white = new Rectangle(length, 40, Color.white, new Point(0,0));
+		int y = 0;
+
 		this.blue = new Rectangle(200, 200, Color.blue, new Point(0,0));
+		this.point = new Point(0,0);
 
 		for (int i=1; i<=stripes.length; i++) {
 			if (i%2==0) {
-				this.white.paint(g);
-				Point.setY(i*40);
+				this.white = new Rectangle(length, 40, Color.white, new Point(0,y));
+				stripes[i-1] = this.white;
+				System.out.println("Print White" + y);
+				y += 40;
 			} else {
-				this.red.paint(g);
-				Point.setY(i*40);
+				this.red = new Rectangle(length, 40, Color.red, new Point(0,y));
+				stripes[i-1] = this.red;
+				System.out.println("Pring red" + y);
+				y += 40;
 			}
 		}
+
+		for (int i = 0; i<stripes.length; i++) {
+			stripes[i].paint(g);
+			System.out.println("Done");
+		}
+
+		this.blue.paint(g);
 		// red.paint(g, 0, 0);
 		// white.paint(g, 0, 40);
 		// red.paint(g, 0, 80);

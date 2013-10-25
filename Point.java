@@ -5,6 +5,7 @@ public class Point {
 
 	private int x;
 	private int y;
+	private int newY;
 
 	public Point(int x, int y) {
 		this.x = x;
@@ -18,9 +19,8 @@ public class Point {
 		return this.y;
 	}
 
-	public int setY(int newY) {
-		this.newY = y;
-		return y;
+	public void setY(int newY) {
+		y = this.newY;
 	}
 
 }
